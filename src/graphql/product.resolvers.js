@@ -22,4 +22,9 @@ const deleteProduct = async (_, { id }) => {
     return id;
 };
 
-module.exports = { product, products, addProduct, updateProduct, deleteProduct };
+const getProductsByCategory = (parent) => {
+    const id = parent.dataValues.id;
+    return service.getByCategory(id);
+};
+
+module.exports = { product, products, addProduct, updateProduct, deleteProduct, getProductsByCategory };

@@ -1,6 +1,6 @@
-const { product, products, addProduct, updateProduct, deleteProduct } = require('./product.resolvers');
+const { product, products, addProduct, updateProduct, deleteProduct, getProductsByCategory } = require('./product.resolvers');
 const { login } = require('./auth.resolvers');
-const { addCategory } = require('./category.resolvers');
+const { addCategory, getCategory } = require('./category.resolvers');
 
 const resolvers = {
     Query: {
@@ -8,7 +8,8 @@ const resolvers = {
         getPerson: (_, { name, age }) => `Hello ${name} you are ${age} years old`,
         // Products
         product,
-        products
+        products,
+        category: getCategory
     },
     Mutation: {
         login,
@@ -16,6 +17,9 @@ const resolvers = {
         updateProduct,
         deleteProduct,
         addCategory
+    },
+    Category: {
+        products: getProductsByCategory
     }
 };
 
